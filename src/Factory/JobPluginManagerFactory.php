@@ -2,9 +2,8 @@
 
 namespace SlmQueue\Factory;
 
-use Interop\Container\ContainerInterface;
-use Laminas\ServiceManager\FactoryInterface;
-use Laminas\ServiceManager\ServiceLocatorInterface;
+use Psr\Container\ContainerInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use SlmQueue\Job\JobPluginManager;
 
 class JobPluginManagerFactory implements FactoryInterface
@@ -17,10 +16,5 @@ class JobPluginManagerFactory implements FactoryInterface
         $config = $config['slm_queue']['job_manager'];
 
         return new JobPluginManager($container, $config);
-    }
-
-    public function createService(ServiceLocatorInterface $serviceLocator): JobPluginManager
-    {
-        return $this($serviceLocator, JobPluginManager::class);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace SlmQueue\Factory;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 use Laminas\EventManager\EventManager;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
