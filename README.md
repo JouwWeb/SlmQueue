@@ -138,6 +138,29 @@ Giving an example with beanstalkd and a queue which you called "default", you ca
 
     php public/index.php queue beanstalkd default
 
+### Slm short circuit queue config example
+
+Shortcut queue does not add job into queue - instead, it executes it instantly.
+This allows one to conveniently debug SLM jobs as they were part of the same application run instance.
+Just add this config, then set a breakpoint in your Job class and debug it!
+
+APPLICATION/`config/autoload/slm.local.php`:
+```php
+<?php
+
+use SlmQueue\Factory\ShortCircuitQueueFactory;
+
+return [
+    'slm_queue' => [
+        'queue_manager' => [
+            'factories' => [
+                'some_queue_name' => ShortCircuitQueueFactory::class,
+            ],
+        ],
+    ],
+];
+```
+
 Contributing
 ------------
 
